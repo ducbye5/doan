@@ -1,0 +1,60 @@
+.pb-1{
+	padding-bottom: 0.5rem;
+}
+.pb-2{
+	padding-bottom: 1rem;
+}
+.pb-3{
+	padding-bottom: 1.5rem;
+}
+.pb-4{
+	padding-bottom: 3rem;
+}
+.pb-5{
+	padding-bottom: 4.5rem;
+}
+.pt-1{
+	padding-top: 0.5rem;
+}
+.pt-2{
+	padding-top: 1rem;
+}
+.pt-3{
+	padding-top: 1.5rem;
+}
+.pt-4{
+	padding-top: 3rem;
+}
+.pt-5{
+	padding-top: 4.5rem;
+}
+.pt-3{
+	padding-top: 1.5rem;
+}
+.text-ED8B8B{
+	color: #ED8B8B
+}
+.bg-color-white{
+	background-color: white
+}
+.mb-0{
+	margin-bottom: 0
+}
+.isValid{
+	border-color: red;
+}
+.isValid:focus{
+	border-color: red;
+}
+.success{
+	border-color: green;
+}
+.success:focus{
+	border-color: green;
+}
+.default{
+	border-color: #ddd;
+}
+.default:focus{
+	border-color: #333;
+}

@@ -1,0 +1,28 @@
+<?php
+
+return [
+	'tittle_confirm' => 'Notification',
+	'content_confirm' => 'Are you sure you want to take this action?',
+	'yes' => 'Yes',
+	'no' => 'No',
+	'edit' => 'Edit',
+	'fullname'=>'Fullname',
+	'sex'=>'Sex',
+	'man'=>'Man',
+	'woman'=>'Woman',
+	'birthday'=>'Birthday',
+	'address'=>'Address',
+	'telephone'=>'TelephoneNumber',
+	'email'=>'Email',
+	'role'=>'Role',
+	'description'=>'Description',
+	'sociallinks'=>'Social links',
+	'facebook'=>'Facebook',
+	'twitter'=>'Twitter',
+	'linkedin'=>'Linkedin',
+	'pinterest'=>'Pinterest',
+	'skype'=>'Skype',
+	'changerole' => 'Change Role',
+	'cancel' => 'Cancel',
+	'change' => 'Change',
+];
