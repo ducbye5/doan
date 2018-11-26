@@ -57,9 +57,11 @@ $(function(){
 
 		var postnews_price_per_day = '#postnews_price_per_day';
 
-		var postnews_time_start = '#postnews_time_start';
+		var postnews_time_start = '#postnews_time_start',
+			postnews_time_start_message = 'The start time must be less than the end time';
 
-		var postnews_time_finish = '#postnews_time_finish';
+		var postnews_time_finish = '#postnews_time_finish',
+			postnews_time_finish_message = 'End date must be at least 7 days';
 
 		var postnews_total_days = '#postnews_total_days';
 
@@ -362,21 +364,173 @@ $(function(){
 		}
 
 		function total_cost(){
-			var postnews_type_val = $(postnews_type).val(),
-				;
+			var postnews_type_val = $(postnews_type).val();
+				
+			var postnews_typeofcost_val = $(postnews_typeofcost).val();
 
-			var sales = 0;
-
-			if((postnews_type_val == 'Rental') || (postnews_type_val == 'Sell')){
+			var postnews_price_per_day_text = 2,
+				postnews_total_day_text = $(postnews_total_days).text();	
+			var VAT = 0.1;
+			var sales = 0.5;
+			if(postnews_type_val == ''){
 				sales = 0;
-				if(){
-
-				}
-			}else if((postnews_type_val == 'Rent') || (postnews_type_val == 'Purchase')){
-
+			}else if((postnews_type_val == 'Rental') || (postnews_type_val == 'Sell')){
+				sales = 1;	
 			}
+			if(postnews_typeofcost_val == 'Goodwill'){
+				postnews_price_per_day_text = 4*sales;
+			}else if(postnews_typeofcost_val == 'Vip'){
+				postnews_price_per_day_text = 7*sales
+			}else if(postnews_typeofcost_val == 'Special'){
+				postnews_price_per_day_text = 10*sales;
+			}else{
+				postnews_price_per_day_text =2*sales;
+			}
+			$(postnews_price_per_day).text(postnews_price_per_day_text);
+			var cost_begin =  postnews_price_per_day_text * postnews_total_day_text;
+			var cost_VAT = (cost_begin*VAT).toFixed(0);
+			var cost_finish = new Number(cost_begin) + new Number(cost_VAT);
+			$(postnews_post_fee).text(cost_begin);
+			$(postnews_vat).text(cost_VAT);
+			$(postnews_total_cost).text(cost_finish);
 		}
+		function select_time(){
+			var datetime_now = new Date();
+			var year_now = datetime_now.getFullYear(),
+				month_now = datetime_now.getMonth() + 1,
+				date_now = datetime_now.getDate();
+			var year_after_7days = year_now,
+				month_after_7days = month_now,
+				dayofweek = 7;
+			if(year_now % 100 == 0){
+					if((year_now / 100) % 4 == 0){
+						if((date_now + dayofweek) >29){
+							var date_after_7days = date_now + dayofweek - 29;
+							month_after_7days = month_now + 1;
+						}else{
+							var date_after_7days = date_now + dayofweek;
+						}
+					}else{
+						
+					}
+				}
+			if(month_now == 2){
+				if(year_now % 100 == 0){
+					if((year_now / 100) % 4 == 0){
+						if((date_now + dayofweek) >29){
+							var date_after_7days = date_now + dayofweek - 29;
+							month_after_7days = month_now + 1;
+							if(month_after_7days > 12){
+								month_after_7days = month_after_7days - 12;
+								year_after_7days = year_after_7days + 1;
+							}
+						}else{
+							var date_after_7days = date_now + dayofweek;
+						}
+					}else{
+						if((date_now + dayofweek) >28){
+							var date_after_7days = date_now + dayofweek - 28;
+							month_after_7days = month_now + 1;
+							if(month_after_7days > 12){
+								month_after_7days = month_after_7days - 12;
+								year_after_7days = year_after_7days + 1;
+							}
+						}else{
+							var date_after_7days = date_now + dayofweek;
+						}
+					}
+				}else{
+					if(year_now % 4 == 0){
+						if((date_now + dayofweek) >29){
+							var date_after_7days = date_now + dayofweek - 29;
+							month_after_7days = month_now + 1;
+							if(month_after_7days > 12){
+								month_after_7days = month_after_7days - 12;
+								year_after_7days = year_after_7days + 1;
+							}
+						}else{
+							var date_after_7days = date_now + dayofweek;
+						}
+					}else{
+						if((date_now + dayofweek) >28){
+							var date_after_7days = date_now + dayofweek - 28;
+							month_after_7days = month_now + 1;
+							if(month_after_7days > 12){
+								month_after_7days = month_after_7days - 12;
+								year_after_7days = year_after_7days + 1;
+							}
+						}else{
+							var date_after_7days = date_now + dayofweek;
+						}
+					}
+				}	
+			}else if(month_now == 4 || month_now == 6 || month_now == 9 || month_now == 11){
+				if((date_now + dayofweek) >30){
+					var date_after_7days = date_now + dayofweek - 30;
+					month_after_7days = month_now + 1;
+					if(month_after_7days > 12){
+						month_after_7days = month_after_7days - 12;
+						year_after_7days = year_after_7days + 1;
+					}
+				}else{
+					var date_after_7days = date_now + dayofweek;
+				}
+			}else{
+				if((date_now + dayofweek) >31){
+					var date_after_7days = date_now + dayofweek - 31;
+					month_after_7days = month_now + 1;
+					if(month_after_7days > 12){
+						month_after_7days = month_after_7days - 12;
+						year_after_7days = year_after_7days + 1;
+					}
+				}else{
+					var date_after_7days = date_now + dayofweek;
+				}
+			}
 
+			var time_now = year_now + '-' + month_now + '-' + date_now;
+			$(postnews_time_start).attr('min',time_now);
+			$(postnews_time_start).val(time_now);
+
+			var time_after_7days = year_after_7days + '-' + ((month_after_7days < 10) ? '0'+month_after_7days:month_after_7days) + '-' + ((date_after_7days < 10)?'0'+date_after_7days:date_after_7days);
+			$(postnews_time_finish).attr('min',time_after_7days);
+			$(postnews_time_finish).val(time_after_7days);
+		}
+		function valid_datetime(){
+			var time_finish_val = $(postnews_time_finish).val();
+			var time_start_val = $(postnews_time_start).val();
+			var datetime_start = new Date(time_start_val);
+			var datetime_finish = new Date(time_finish_val);
+			var status = true;
+			var minisecond_of_day = 86400000;
+			var total_day_post_news = 0;
+			if(time_finish_val != '' && time_start_val != ''){
+				total_day_post_news = (datetime_finish - datetime_start)/minisecond_of_day;
+				if(total_day_post_news < 7){
+					message_error_start = postnews_time_start_message;
+					message_error_finish = postnews_time_finish_message;
+					message_error(postnews_time_start,message_error_start);
+					message_error(postnews_time_finish,message_error_finish);
+					error(postnews_time_start);
+					error(postnews_time_finish);
+					total_day_post_news = 0;
+					status = false;
+				}else{
+					success(postnews_time_start);
+					success(postnews_time_finish);
+				}
+			}else{
+				message_error_start = postnews_time_start_message;
+				message_error_finish = postnews_time_finish_message;
+				message_error(postnews_time_start,message_error_start);
+				message_error(postnews_time_finish,message_error_finish);
+				error(postnews_time_start);
+				error(postnews_time_finish);
+				status = false;
+			}
+			$(postnews_total_days).text(total_day_post_news);
+			return status;
+		}
 	function validation(){
 
 
@@ -387,6 +541,9 @@ $(function(){
 			valid_input_text(postnews_title,postnews_title_minlength,postnews_title_maxlength,postnews_title_message);
 		});
 
+		$(postnews_type).change(function(){
+			total_cost();
+		});
 		$(postnews_address).keyup(function(){
 			valid_input_text(postnews_address);
 		});
@@ -508,9 +665,22 @@ $(function(){
 		$(postnews_district).change(function(){
 			valid_input_select(postnews_district);
 		});
+		$(postnews_typeofcost).change(function(){
+			total_cost();
+		});
+		$(postnews_time_start).change(function(){
+			valid_datetime();
+			total_cost();
+		});
+		$(postnews_time_finish).change(function(){
+			valid_datetime();
+			total_cost();
+		});
 	}
 	address();
+	select_time();
 	validation();
+	total_cost();
 	
 	
 
@@ -533,10 +703,10 @@ $(function(){
 			valid_input_text(postnews_description,postnews_description_minlength,postnews_description_maxlength,postnews_description_message),
 			valid_input_text(postnews_contact_mobilephone,postnews_contact_mobilephone_minlength,postnews_contact_mobilephone_maxlength,postnews_contact_mobilephone_message),
 			check_email(postnews_contact_email),
-			check_integer(postnews_contact_name),
-			check_special_charactor(postnews_contact_name)
+			check_special_charactor(postnews_contact_name),
+			valid_datetime()
 		],
-			status = true;
+		status = true;
 		length = arr_result.length;
 		for(var i = 0;i <= length;i++){
 			if(arr_result[i] == false){

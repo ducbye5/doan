@@ -24,19 +24,21 @@
 						<div class="col-md-12 col-xs-12 pt-2 pb-2">
 							<div class="col-md-3"><label>Time Start</label></div>
 							<div class="col-md-6">
-								<input type="date" name="calendar[timestart]" class="form-control" value="2018-10-26" min="2018-10-26" max="2018-10-26" id="postnews_time_start">
+								<input type="date" name="calendar[timestart]" class="form-control" value="" id="postnews_time_start">
+								<i class="text-red hide" id="postnews_time_start_error"></i>
 							</div>
 						</div>
 						<div class="col-md-12 col-xs-12 pt-2 pb-2">
 							<div class="col-md-3"><label>Time Finish</label></div>
 							<div class="col-md-6">
-								<input type="date" name="calendar[timefinish]" class="form-control" value="2018-11-30" id="postnews_time_finish">
+								<input type="date" name="calendar[timefinish]" class="form-control" value="" id="postnews_time_finish">
+								<i class="text-red hide" id="postnews_time_finish_error"></i>
 							</div>
 						</div>
 						<div class="col-md-12 col-xs-12 pt-2 pb-2">
 							<div class="col-md-3 col-sm-3 col-xs-5"><label>Total days</label></div>
 							<div class="col-md-6 col-sm-6 col-xs-7">
-								<b id="postnews_total_days">30</b><i> days</i>
+								<b id="postnews_total_days">7</b><i> days</i>
 							</div>
 						</div>
 						<div class="col-md-12 col-xs-12 pt-2 pb-2">
