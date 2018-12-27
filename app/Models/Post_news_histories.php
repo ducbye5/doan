@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class roles extends Model
+class Post_news_histories extends Model
 {
-    //
+    
 }

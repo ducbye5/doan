@@ -78,7 +78,12 @@ class S_CustomerService
 		$data_input['password'] = \Hash::make($input['password']);
 		unset($data_input['profile_fullname']);
 		unset($input['fullname']);
-		$this->customersRepository->create($data_input);
-		return $input;
+		$check_insert_data = $this->customersRepository->create($data_input);
+		if($check_insert_data){
+			return $input;
+		}else{
+			return false;
+		}
+		
 	}
 }

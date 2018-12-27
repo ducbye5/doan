@@ -1,7 +1,12 @@
 						<div class="col-md-12 col-xs-12 pt-2 pb-2">
 							<div class="col-md-12">
+								<hr>
 								<b class="text-ED8B8B"><u>BASIC INFORMATION</u></b>
 								<hr>
+								@if(session::has('post_news_noti'))
+								<label><i class="text-red">{{ session::get('post_news_noti') }}</i></label>
+								<hr>
+								@endif
 							</div>
 						</div>
 						<div class="col-md-12 col-xs-12 pt-2 pb-2">
@@ -27,43 +32,58 @@
 							</div>
 						</div>
 						<div class="col-md-12 col-xs-12 pt-2 pb-2">
+							<div class="col-md-3"><label>Type Of Properties<i class="text-red">*</i></label></div>
+							<div class="col-md-6">
+								<div class="pb-2">
+									<select class="form-control chosen-select" name="basicInformation[typeofproperties]" data-placeholder="" id="postnews_typeofproperties">
+										<option value="" selected>-- Type --</option>
+										<option value="Dwelling_House">Dwelling House</option>
+										<option value="Apartment">Apartment</option>
+										<option value="Land">Land</option>
+										<option value="Other_Real_Estate">Other Real Estate</option>
+									</select>
+									<i class="text-red hide" id="postnews_typeofproperties_error"></i>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12 pt-2 pb-2">
 							<div class="col-md-3"><label>Address<i class="text-red">*</i></label></div>
 							<div class="col-md-6" id="postnews_place" >
 									<div class="pb-2">
-										<select class="form-control chosen-select" name="country" data-placeholder="" id="postnews_country">
+										<select class="form-control chosen-select" name="basicInformation[country]" data-placeholder="" id="postnews_country">
 											@include('Site.Include.SelectOption.Country.Country')
 										</select>
 										<i class="text-red hide" id="postnews_country_error"></i>
 									</div>
 									<div class="pb-2">
-										<select class="form-control chosen-select" name="city" data-placeholder="" id="postnews_city">
+										<select class="form-control chosen-select" name="basicInformation[city]" data-placeholder="" id="postnews_city">
 											@include('Site.Include.SelectOption.City.VietNam')
 										</select>
 										<i class="text-red hide" id="postnews_city_error"></i>
 									</div>
 									<div class="pb-2">
-										<select class="form-control chosen-select" name="district" data-placeholder="" id="postnews_district">
+										<select class="form-control chosen-select" name="basicInformation[district]" data-placeholder="" id="postnews_district">
 											@include('Site.Include.SelectOption.District.VietNam')
 										</select>
 										<i class="text-red hide" id="postnews_district_error"></i>
 									</div>
 									<div class="pb-2">
-										<select class="form-control chosen-select" name="ward" data-placeholder="" id="postnews_ward">
+										<select class="form-control chosen-select" name="basicInformation[ward]" data-placeholder="" id="postnews_ward">
 											@include('Site.Include.SelectOption.Ward.VietNam')
 										</select>
 									</div>
 									<div class="pb-2">
-										<select class="form-control chosen-select" name="street" data-placeholder="" id="postnews_street">
+										<select class="form-control chosen-select" name="basicInformation[street]" data-placeholder="" id="postnews_street">
 											@include('Site.Include.SelectOption.Street.VietNam')
 										</select>
 									</div>
 									<div class="pb-2">
-										<select class="form-control chosen-select" name="project" data-placeholder="" id="postnews_project">
+										<select class="form-control chosen-select" name="basicInformation[project]" data-placeholder="" id="postnews_project">
 											@include('Site.Include.SelectOption.Project.VietNam')
 										</select>
 									</div>
 									<div class="pb-2">
-										<input type="text" id="postnews_address" name="address" class="form-control" placeholder="ex : Dự án An Lạc - Yên Phụ - Điện Biên - Ba Đình - Hà Nội - Việt Nam" value="">
+										<input type="text" id="postnews_address" name="basicInformation[address]" class="form-control" placeholder="ex : Dự án An Lạc - Yên Phụ - Điện Biên - Ba Đình - Hà Nội - Việt Nam" value="">
 										<i class="text-red hide" id="postnews_address_error"></i>
 									</div>
 							</div>

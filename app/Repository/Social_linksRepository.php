@@ -13,7 +13,7 @@ class Social_linksRepository implements Social_linksRepositoryInterface
 	}
 	public function findByID(int $id = Null,array $column = ['*'])
 	{
-		$result = $this->model->select($column)->where('id',$id)->get()->toArray();
+		$result = $this->model->select($column)->where('id',$id)->first()->toArray();
 		return $result;
 	}
 	public function createAndGetID(array $input = [])

@@ -42,5 +42,17 @@ class AppServiceProvider extends ServiceProvider
             'App\Repository\Interfaces\CustomersRepositoryInterface',
             'App\Repository\CustomersRepository'
         );
+        $this->app->bind(
+            'App\Repository\Interfaces\New_detailsRepositoryInterface',
+            'App\Repository\New_detailsRepository'
+        );
+        $this->app->bind(
+            'App\Repository\Interfaces\New_infosRepositoryInterface',
+            'App\Repository\New_infosRepository'
+        );
+        $this->app->bind(
+            'App\Repository\Interfaces\Post_news_historiesRepositoryInterface',
+            'App\Repository\Post_news_historiesRepository'
+        );
     }
 }

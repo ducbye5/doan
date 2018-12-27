@@ -1,4 +1,4 @@
- <?php
+<?php
 
 namespace App\Http\Controllers\Admin\User;
 
@@ -99,7 +99,9 @@ class UserController extends Controller
 		if($dataImage != ''){
 			$defaultUserImage = 'default.png';
 			$pathStore = 'upload/image/user/';
-			$this->fileService->uploadFile($dataImage,$pathStore);
+			$newFileName = $this->fileService->getName($dataImage);
+			$newFileName = time(0).$newFileName;
+			$this->fileService->uploadFile($dataImage,$pathStore,$newFileName);
 			$column_profile_id = ['profile_id'];
 			$profile_id = $this->userRepository->findByID($id,$column_profile_id);
 			$profile_id = $profile_id[0]['profile_id'];
@@ -107,8 +109,6 @@ class UserController extends Controller
 			$oldFileName = $this->profilesRepository->findByID($profile_id,$column_profile_avatar);
 			$oldFileName = $oldFileName[0]['profile_avatar'];
 			$this->fileService->deleteFile($oldFileName,$pathStore,$defaultUserImage);
-			$newFileName = $this->fileService->getName($dataImage);
-			$newFileName = time(0).$newFileName;
 		}else{
 			$newFileName = '';
 		}

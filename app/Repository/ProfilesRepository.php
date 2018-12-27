@@ -15,7 +15,7 @@ class ProfilesRepository implements ProfilesRepositoryInterface
 
 	public function findByID(int $id = Null,array $column = ['*'])
 	{
-		$result = $this->model->select($column)->where('id',$id)->get()->toArray();
+		$result = $this->model->select($column)->where('id',$id)->first()->toArray();
 		return $result;
 	}
 

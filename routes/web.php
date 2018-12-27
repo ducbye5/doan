@@ -24,7 +24,7 @@ Route::group(array('middleware'=>'customer'),function(){
 		'as' => 'customer.login'
 	]);
 
-	Route::post('regist',[
+	Route::post('registcustomer',[
 		'uses' => 'Site\CustomerController@regist',
 		'as' => 'customer.regist'
 	]);
@@ -59,13 +59,9 @@ Route::group(array('middleware'=>'customer'),function(){
 			'uses'=>'Site\PostNewsController@index',
 			'as'=>'postnews.index'
 		]);
-	Route::post('/postnewssell',[
-			'uses'=>'Site\PostNewsController@registSell',
-			'as'=>'PostNews.sell'
-		]);
-	Route::post('/postnewspurchase',[
-			'uses'=>'Site\PostNewsController@registPurchare',
-			'as'=>'PostNews.purchase'
+	Route::post('/postnews',[
+			'uses'=>'Site\PostNewsController@regist',
+			'as'=>'postNews.regist'
 		]);
 	//buy coint
 	Route::get('/coint',[

@@ -14,15 +14,14 @@ class CustomersRepository implements CustomersRepositoryInterface
 
 	public function create(array $data = [])
 	{
+		$result = false;
 		if($data != []){
 			$result = $this->model->insert($data);
-		}else{
-
 		}
 		return $result;
 	}
 
-	public function findByEmail(string $email = Null,array $column = ['*'])
+	public function findByEmail(string $email = null,array $column = ['*'])
 	{
 		$result = $this->model
 		               ->select($column)
@@ -31,12 +30,19 @@ class CustomersRepository implements CustomersRepositoryInterface
 		return $result;
 	}
 
-	public function findByID(int $id = Null,array $column = ['*'])
+	public function findByID(int $id = null,array $column = ['*'])
 	{
 		$result = $this->model
 		               ->select($column)
 		               ->where('id',$id)
 		               ->first();
 		return $result;
+	}
+
+	public function update(int $id = null,array $array_data = [])
+	{
+		$result = $this->model
+						->where('id',$id)
+						->update($array_data);
 	}
 }

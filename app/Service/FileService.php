@@ -4,16 +4,16 @@ namespace App\Service;
 
 class FileService
 {
-	public function uploadFile($dataFile,$pathStore)
+	public function uploadFile($dataFile,$pathStore,$filename)
 	{
+		$status = false;
 		if($dataFile != '')
 		{
 			if($this->getSize($dataFile)){
-				$nameFile = $this->getName($dataFile);
-				$nameFile = time(0).$nameFile;
-				$dataFile->move($pathStore,$nameFile);
+				$status = $dataFile->move($pathStore,$filename);
 			}
 		}
+		return $status;
 	}
 
 	public function getName($dataFile)
@@ -31,14 +31,16 @@ class FileService
 		}
 	}
 
-	public function deleteFile($fileName,$pathStore,$defaultUserImage = '')
+	public function deleteFile($fileName,$pathStore,$defaultNameImage = '')
 	{
-		if(($fileName != '') && ($fileName != $defaultUserImage)){
+		$status = false;
+		if(!empty($fileName) && ($fileName != $defaultNameImage)){
 			$fileExist = $this->checkExist($fileName,$pathStore);
 			if($fileExist){
-				$this->delete($fileName,$pathStore);
+				$status = $this->delete($fileName,$pathStore); 
 			}
 		}
+		return $status;
 	}
 
 	public function delete($fileName,$pathStore)

@@ -17,6 +17,7 @@ $(function(){
 
 
 		var postnews_type = '#postnews_type',
+			postnews_typeofproperties = '#postnews_typeofproperties',
 			postnews_country = '#postnews_country',
 			postnews_city = '#postnews_city',
 			postnews_district = '#postnews_district';
@@ -284,6 +285,7 @@ $(function(){
 		}
 	}
 
+
 	function properties_price(){
 			var unit = $(postnews_unit).val(),
 				acreage = $(postnews_acreage).val(),
@@ -488,7 +490,7 @@ $(function(){
 				}
 			}
 
-			var time_now = year_now + '-' + month_now + '-' + date_now;
+			var time_now = year_now + '-' + ((month_now < 10) ? '0'+month_now:month_now) + '-' + ((date_now < 10)?'0'+date_now:date_now);
 			$(postnews_time_start).attr('min',time_now);
 			$(postnews_time_start).val(time_now);
 
@@ -656,6 +658,9 @@ $(function(){
 			valid_input_select(postnews_type);
 			news_type();
 		});
+		$(postnews_typeofproperties).change(function(){
+			valid_input_select(postnews_typeofproperties);
+		});
 		$(postnews_country).change(function(){
 			valid_input_select(postnews_country);
 		});
@@ -687,6 +692,7 @@ $(function(){
 	$(submit).click(function(){
 		valid_input_text(postnews_title,postnews_title_minlength,postnews_title_maxlength,postnews_title_message);
 		valid_input_select(postnews_type);
+		valid_input_select(postnews_typeofproperties);
 		valid_input_select(postnews_country);
 		valid_input_select(postnews_city);
 		valid_input_select(postnews_district);
@@ -697,6 +703,7 @@ $(function(){
 		var arr_result = [
 			valid_input_text(postnews_title,postnews_title_minlength,postnews_title_maxlength,postnews_title_message),
 			valid_input_select(postnews_type),
+			valid_input_select(postnews_typeofproperties),
 			valid_input_select(postnews_country),
 			valid_input_select(postnews_city),
 			valid_input_select(postnews_district),

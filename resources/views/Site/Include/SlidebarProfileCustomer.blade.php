@@ -4,10 +4,10 @@
 							<h3 class="text-center"><b>Your Profile</b></h3>
 							<div class="testimonial-author text-center pb-2">
 								<div class="img-thumbnail-small img-circle">
-									<img src="{{ asset('images/agents/agent-1.jpg') }}" class="img-circle" alt="Andrew MCCarthy">
+									<img src="{{ asset('upload/image/user/'.$customer['profile_avatar']) }}" class="img-circle" alt="Andrew MCCarthy" width="110" height="110">
 								</div>
-								<div>Đỗ Minh Đức</div>
-								<div>Coint : <i>10,000</i></div>
+								<div>{{ $customer['profile_fullname'] }}</div>
+								<div>Coint : <i>{{ $customer['coint'] }}</i></div>
 								<div>
 									<a href="{{ route('coint.index') }}" class="btn btn-primary">Buy Coint</a>
 								</div>
