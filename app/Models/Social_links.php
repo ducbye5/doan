@@ -12,4 +12,6 @@ class Social_links extends Model
     	'linkedin',
     	'pinterest',
     ];
+
+    protected $table = 'social_links';
 }

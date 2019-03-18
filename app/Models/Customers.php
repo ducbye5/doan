@@ -23,4 +23,6 @@ class Customers extends Model
     protected $hidden = [
         'password'
     ];
+
+    protected $table = 'customers';
 }

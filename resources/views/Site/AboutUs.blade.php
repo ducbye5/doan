@@ -32,9 +32,14 @@
 						<div class="col-md-4 animation">
 							<div class="offer-item pgl-bg-light">
 								<div class="offer-item-inner">
-									<p><i class="icons icon-hand"></i></p>
-									<h3>Brokerage Services</h3>
-									<p>Perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium, totam rem.</p>
+									<p><i class="icons icon-home"></i></p>
+									<h3>Viet Nam</h3>
+									<address class="text-left">
+										<i class="fa fa-map-marker"></i> Office : HITC Building , 239 Xuân Thủy , Cầu Giấy , Hà Nội<br>
+										<i class="fa fa-phone"></i> Telephone : 0800-666-6666<br>
+										<i class="fa fa-fax"></i> Fax : 1-800-666-8888<br>
+										<i class="fa fa-envelope-o"></i> Mail: <a href="mailto:RealEstast@gmail.com">RealEstast@gmail.com</a>
+									</address>
 								</div>
 							</div>
 						</div>
@@ -42,17 +47,27 @@
 							<div class="offer-item pgl-bg-light">
 								<div class="offer-item-inner">
 									<p><i class="icons icon-home"></i></p>
-									<h3>Real Estate Management</h3>
-									<p>Sed perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium</p>
+									<h3>England</h3>
+									<address class="text-left">
+										<i class="fa fa-map-marker"></i> Office : HITC Building , 239 Xuân Thủy , Cầu Giấy , Hà Nội<br>
+										<i class="fa fa-phone"></i> Telephone : 0800-666-6666<br>
+										<i class="fa fa-fax"></i> Fax : 1-800-666-8888<br>
+										<i class="fa fa-envelope-o"></i> Mail: <a href="mailto:RealEstast@gmail.com">RealEstast@gmail.com</a>
+									</address>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-4 animation">
 							<div class="offer-item pgl-bg-light">
 								<div class="offer-item-inner">
-									<p><i class="icons icon-chart"></i></p>
-									<h3>Construction &amp; Development</h3>
-									<p>Unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium, totam rem aperiam.</p>
+									<p><i class="icons icon-home"></i></p>
+									<h3>United States Of America</h3>
+									<address class="text-left">
+										<i class="fa fa-map-marker"></i> Office : HITC Building , 239 Xuân Thủy , Cầu Giấy , Hà Nội<br>
+										<i class="fa fa-phone"></i> Telephone : 0800-666-6666<br>
+										<i class="fa fa-fax"></i> Fax : 1-800-666-8888<br>
+										<i class="fa fa-envelope-o"></i> Mail: <a href="mailto:RealEstast@gmail.com">RealEstast@gmail.com</a>
+									</address>
 								</div>
 							</div>
 						</div>
@@ -64,21 +79,24 @@
 			<!-- Begin testimonial -->
 			<section class="pgl-testimonials pgl-testimonials-full">
 				<div class="container">
-					<h2>Happy Clients</h2>
-					<div class="owl-carousel pgl-bg-dark pgl-testimonial" data-plugin-options='{"items": 1, "pagination": false, "autoHeight": true}'>
+					<h2>CEO</h2>
+					<div class="owl-carousel pgl-bg-dark pgl-testimonial" data-plugin-options='{"items": 1, "pagination": false, "autoHeight": true, "autoPlay": true}'>
 						<div class="row">
 							<div class="col-sm-4">
 								<div class="testimonial-author">
 									<div class="img-thumbnail-small img-circle">
 										<img src="{{ asset('images/agents/agent-1.jpg') }}" class="img-circle" alt="Andrew MCCarthy">
 									</div>
-									<h4>Andrew MCCarthy</h4>
-									<p><strong>Selller</strong></p>
+									<h4>John Smith</h4>
+									<p><strong>CEO</strong></p>
 								</div>
 							</div>
 							<div class="col-sm-8">
-								<blockquote class="testimonial">
-									<p>Sed perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium, totam rem aperiam. Lorem ipsum dolor sit amet, feugiat delicat liberavisse id cum, no quo maiorum intellegebat, liber regione.</p>
+								<blockquote class="testimonial pad-top-0">
+									<address>
+										<i class="fa fa-map-marker"></i> Office : Viet Nam<br>
+									</address>
+									<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 								</blockquote>
 							</div>
 						</div>
@@ -89,12 +107,34 @@
 										<img src="{{ asset('images/agents/agent-1.jpg') }}" class="img-circle" alt="Andrew MCCarthy">
 									</div>
 									<h4>John Smith</h4>
-									<p><strong>Selller</strong></p>
+									<p><strong>CEO</strong></p>
 								</div>
 							</div>
 							<div class="col-sm-8">
-								<blockquote class="testimonial">
-									<p>Sed perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium, totam rem aperiam. Lorem ipsum dolor sit amet, feugiat delicat liberavisse id cum, no quo maiorum intellegebat, liber regione.</p>
+								<blockquote class="testimonial pad-top-0">
+									<address>
+										<i class="fa fa-map-marker"></i> Office : England<br>
+									</address>
+									<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+								</blockquote>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-4">
+								<div class="testimonial-author">
+									<div class="img-thumbnail-small img-circle">
+										<img src="{{ asset('images/agents/agent-1.jpg') }}" class="img-circle" alt="Andrew MCCarthy">
+									</div>
+									<h4>John Smith</h4>
+									<p><strong>CEO</strong></p>
+								</div>
+							</div>
+							<div class="col-sm-8">
+								<blockquote class="testimonial pad-top-0">
+									<address>
+										<i class="fa fa-map-marker"></i> Office : United States Of America<br>
+									</address>
+									<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 								</blockquote>
 							</div>
 						</div>
@@ -106,14 +146,14 @@
 			<!-- Begin testimonial -->
 			<section class="pgl-teams">
 				<div class="container">
-					<h2>Our Team</h2>
+					<h2>BROKER</h2>
 					<p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim<br>veniam, quis nostrudexercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 					<div class="row">
 						<div class="col-xs-6 col-md-3">
 							<div class="pgl-team-item pgl-bg-light">
 								
 								<div class="img-thumbnail-medium">
-									<a href="#"><img src="{{ asset('images/agents/team-1.jpg') }}" class="img-responsive" alt=""></a>
+									<a href="{{ route('agent.index',['id' => '1']) }}"><img src="{{ asset('images/agents/team-1.jpg') }}" class="img-responsive" alt=""></a>
 									<ul class="social-links">
 										<li><a href="https://www.facebook.com/" title="facebook" target="blank"><i class="fa fa-facebook"></i></a></li>
 										<li><a href="https://twitter.com/" title="twitter" target="blank"><i class="fa fa-twitter"></i></a></li>
@@ -123,9 +163,9 @@
 								</div>
 								<div class="pgl-team-info">
 									<h4>Nicholas Mitchell</h4>
-									<p class="text-muted">Sale Director</p>
+									<p class="text-muted">Broker - U.K</p>
 									<p>Eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrudexercitation</p>
-									<a href="{{ route('agent.index') }}">View profile</a>
+									<a href="{{ route('agent.index',['id' => '1']) }}">View profile</a>
 								</div>
 								
 							</div>
@@ -135,7 +175,7 @@
 							<div class="pgl-team-item pgl-bg-light">
 								
 								<div class="img-thumbnail-medium">
-									<a href="#"><img src="{{ asset('images/agents/team-1.jpg') }}" class="img-responsive" alt=""></a>
+									<a href="{{ route('agent.index',['id' => '1']) }}"><img src="{{ asset('images/agents/team-1.jpg') }}" class="img-responsive" alt=""></a>
 									<ul class="social-links">
 										<li><a href="https://www.facebook.com/" title="facebook" target="blank"><i class="fa fa-facebook"></i></a></li>
 										<li><a href="https://twitter.com/" title="twitter" target="blank"><i class="fa fa-twitter"></i></a></li>
@@ -145,9 +185,9 @@
 								</div>
 								<div class="pgl-team-info">
 									<h4>Nicholas Mitchell</h4>
-									<p class="text-muted">Sale Director</p>
+									<p class="text-muted">Broker - Viet Nam</p>
 									<p>Eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrudexercitation</p>
-									<a href="{{ route('agent.index') }}">View profile</a>
+									<a href="{{ route('agent.index',['id' => '1']) }}">View profile</a>
 								</div>
 								
 							</div>
@@ -157,7 +197,7 @@
 							<div class="pgl-team-item pgl-bg-light">
 								
 								<div class="img-thumbnail-medium">
-									<a href="#"><img src="{{ asset('images/agents/team-1.jpg') }}" class="img-responsive" alt=""></a>
+									<a href="{{ route('agent.index',['id' => '1']) }}"><img src="{{ asset('images/agents/team-1.jpg') }}" class="img-responsive" alt=""></a>
 									<ul class="social-links">
 										<li><a href="https://www.facebook.com/" title="facebook" target="blank"><i class="fa fa-facebook"></i></a></li>
 										<li><a href="https://twitter.com/" title="twitter" target="blank"><i class="fa fa-twitter"></i></a></li>
@@ -167,9 +207,9 @@
 								</div>
 								<div class="pgl-team-info">
 									<h4>Nicholas Mitchell</h4>
-									<p class="text-muted">Sale Director</p>
+									<p class="text-muted">Broker - Viet Nam</p>
 									<p>Eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrudexercitation</p>
-									<a href="{{ route('agent.index') }}">View profile</a>
+									<a href="{{ route('agent.index',['id' => '1']) }}">View profile</a>
 								</div>
 								
 							</div>
@@ -179,7 +219,7 @@
 							<div class="pgl-team-item pgl-bg-light">
 								
 								<div class="img-thumbnail-medium">
-									<a href="#"><img src="{{ asset('images/agents/team-1.jpg') }}" class="img-responsive" alt=""></a>
+									<a href="{{ route('agent.index',['id' => '1']) }}"><img src="{{ asset('images/agents/team-1.jpg') }}" class="img-responsive" alt=""></a>
 									<ul class="social-links">
 										<li><a href="https://www.facebook.com/" title="facebook" target="blank"><i class="fa fa-facebook"></i></a></li>
 										<li><a href="https://twitter.com/" title="twitter" target="blank"><i class="fa fa-twitter"></i></a></li>
@@ -189,9 +229,97 @@
 								</div>
 								<div class="pgl-team-info">
 									<h4>Nicholas Mitchell</h4>
-									<p class="text-muted">Sale Director</p>
+									<p class="text-muted">Broker - England</p>
 									<p>Eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrudexercitation</p>
-									<a href="{{ route('agent.index') }}">View profile</a>
+									<a href="{{ route('agent.index',['id' => '1']) }}">View profile</a>
+								</div>
+								
+							</div>
+						</div>
+
+						<div class="col-xs-6 col-md-3">
+							<div class="pgl-team-item pgl-bg-light">
+								
+								<div class="img-thumbnail-medium">
+									<a href="{{ route('agent.index',['id' => '1']) }}"><img src="{{ asset('images/agents/team-1.jpg') }}" class="img-responsive" alt=""></a>
+									<ul class="social-links">
+										<li><a href="https://www.facebook.com/" title="facebook" target="blank"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="https://twitter.com/" title="twitter" target="blank"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="https://www.skype.com/" title="skype" target="blank"><i class="fa fa-skype"></i></a></li>
+										<li><a href="https://www.linkedin.com/" title="linkedin" target="blank"><i class="fa fa-linkedin"></i></a></li>
+									</ul>
+								</div>
+								<div class="pgl-team-info">
+									<h4>Nicholas Mitchell</h4>
+									<p class="text-muted">Broker - England</p>
+									<p>Eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrudexercitation</p>
+									<a href="{{ route('agent.index',['id' => '1']) }}">View profile</a>
+								</div>
+								
+							</div>
+						</div>
+
+						<div class="col-xs-6 col-md-3">
+							<div class="pgl-team-item pgl-bg-light">
+								
+								<div class="img-thumbnail-medium">
+									<a href="{{ route('agent.index',['id' => '1']) }}"><img src="{{ asset('images/agents/team-1.jpg') }}" class="img-responsive" alt=""></a>
+									<ul class="social-links">
+										<li><a href="https://www.facebook.com/" title="facebook" target="blank"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="https://twitter.com/" title="twitter" target="blank"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="https://www.skype.com/" title="skype" target="blank"><i class="fa fa-skype"></i></a></li>
+										<li><a href="https://www.linkedin.com/" title="linkedin" target="blank"><i class="fa fa-linkedin"></i></a></li>
+									</ul>
+								</div>
+								<div class="pgl-team-info">
+									<h4>Nicholas Mitchell</h4>
+									<p class="text-muted">Broker - England</p>
+									<p>Eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrudexercitation</p>
+									<a href="{{ route('agent.index',['id' => '1']) }}">View profile</a>
+								</div>
+								
+							</div>
+						</div>
+
+						<div class="col-xs-6 col-md-3">
+							<div class="pgl-team-item pgl-bg-light">
+								
+								<div class="img-thumbnail-medium">
+									<a href="{{ route('agent.index',['id' => '1']) }}"><img src="{{ asset('images/agents/team-1.jpg') }}" class="img-responsive" alt=""></a>
+									<ul class="social-links">
+										<li><a href="https://www.facebook.com/" title="facebook" target="blank"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="https://twitter.com/" title="twitter" target="blank"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="https://www.skype.com/" title="skype" target="blank"><i class="fa fa-skype"></i></a></li>
+										<li><a href="https://www.linkedin.com/" title="linkedin" target="blank"><i class="fa fa-linkedin"></i></a></li>
+									</ul>
+								</div>
+								<div class="pgl-team-info">
+									<h4>Nicholas Mitchell</h4>
+									<p class="text-muted">Broker - England</p>
+									<p>Eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrudexercitation</p>
+									<a href="{{ route('agent.index',['id' => '1']) }}">View profile</a>
+								</div>
+								
+							</div>
+						</div>
+
+						<div class="col-xs-6 col-md-3">
+							<div class="pgl-team-item pgl-bg-light">
+								
+								<div class="img-thumbnail-medium">
+									<a href="{{ route('agent.index',['id' => '1']) }}"><img src="{{ asset('images/agents/team-1.jpg') }}" class="img-responsive" alt=""></a>
+									<ul class="social-links">
+										<li><a href="https://www.facebook.com/" title="facebook" target="blank"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="https://twitter.com/" title="twitter" target="blank"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="https://www.skype.com/" title="skype" target="blank"><i class="fa fa-skype"></i></a></li>
+										<li><a href="https://www.linkedin.com/" title="linkedin" target="blank"><i class="fa fa-linkedin"></i></a></li>
+									</ul>
+								</div>
+								<div class="pgl-team-info">
+									<h4>Nicholas Mitchell</h4>
+									<p class="text-muted">Broker - England</p>
+									<p>Eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrudexercitation</p>
+									<a href="{{ route('agent.index',['id' => '1']) }}">View profile</a>
 								</div>
 								
 							</div>

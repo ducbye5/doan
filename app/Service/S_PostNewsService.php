@@ -7,7 +7,8 @@ use App\Repository\Interfaces\New_infosRepositoryInterface;
 use App\Repository\Interfaces\New_detailsRepositoryInterface;
 use App\Repository\Interfaces\CustomersRepositoryInterface;
 use App\Repository\Interfaces\Post_news_historiesRepositoryInterface;
-use App\Service\FileService; 
+use App\Service\FileService;
+use App\Service\HelpsService; 
 
 class S_PostNewsService
 {
@@ -16,19 +17,22 @@ class S_PostNewsService
 	private $customersRepository;
 	private $post_news_historiesRepository;
 	private $fileService;
+	private $helpsService;
 
 	public function __construct(
 		New_infosRepositoryInterface $New_infosRepository,
 		New_detailsRepositoryInterface $New_detailsRepository,
 		CustomersRepositoryInterface $CustomersRepository,
 		Post_news_historiesRepositoryInterface $Post_news_historiesRepository,
-		FileService $FileService
+		FileService $FileService,
+		HelpsService $HelpsService
 	){
 		$this->new_infosRepository = $New_infosRepository;
 		$this->new_detailsRepository = $New_detailsRepository;
 		$this->customersRepository = $CustomersRepository;
 		$this->post_news_historiesRepository = $Post_news_historiesRepository;
 		$this->fileService = $FileService;
+		$this->helpsService = $HelpsService;
 	}
 
 	public function index(){
@@ -56,6 +60,8 @@ class S_PostNewsService
 				$status = $this->insert_data($data_input);
 			}
 			if($status){
+				$data_update_session_customer = $result['data_update_session_customer'];
+				$this->helpsService->update_session_customer($data_update_session_customer);
 				$message = $message_success;
 				DB::commit();
 			}else{
@@ -78,7 +84,7 @@ class S_PostNewsService
 	public function pay_for_news($data_input){
 		$data_input = $this->get_fees_information($data_input);
 		$status = false;
-		$customer_id = !empty(\Session::get('customer')->id)?\Session::get('customer')->id:null;
+		$customer_id = !empty(\Session::get('customer')->toArray()['id'])?\Session::get('customer')->toArray()['id']:null;
 		if(!empty($customer_id)){
 			$total_coint_of_customer = $this->customersRepository->findByID($customer_id,['coint'])->coint;
 			if($total_coint_of_customer >= $data_input['feesInformation']['fees_for_news']){
@@ -87,6 +93,7 @@ class S_PostNewsService
 					'coint' => $total_coint_of_customer_after_pay,
 					'updated_at' => now()
 				];
+				$data_update_session_customer = ['coint' => $total_coint_of_customer_after_pay];
 				$this->customersRepository->update($customer_id,$array_update_customers_table);
 				$status = true;
 			}else{
@@ -96,7 +103,8 @@ class S_PostNewsService
 		}
 		$result = [
 			'data_input' => $data_input,
-			'status' => $status
+			'status' => $status,
+			'data_update_session_customer' => !empty($data_update_session_customer)?$data_update_session_customer:''
 		];
 		return $result;
 	}
@@ -175,9 +183,11 @@ class S_PostNewsService
 		$time['updated_at'] = now();
 		$data_news_details = $this->set_data_of_news_detail_table($data_input);
 		$data_news_infos = $this->set_data_of_news_info_table($data_input);
-		$pathStore = 'upload/image/news/';
-		$list_name_pictures = $this->store_Image($data_input['pictures'],$pathStore);
-		$data_news_infos['news_picture'] = $list_name_pictures;
+		if(!empty($data_input['pictures'])){
+			$pathStore = 'upload/image/news/';
+			$list_name_pictures = $this->store_Image($data_input['pictures'],$pathStore);
+		}
+		$data_news_infos['news_picture'] = $list_name_pictures??'';
 		$data_news_details = array_merge($data_news_details,$time);
 		$data_news_infos = array_merge($data_news_infos,$time);
 		$data_result = [
@@ -195,7 +205,6 @@ class S_PostNewsService
 			'news_basic_info_ward' => $data_input['basicInformation']['ward'],
 			'news_basic_info_street' => $data_input['basicInformation']['street'],
 			'news_basic_info_project' => $data_input['basicInformation']['project'],
-			'news_description_info' => $data_input['descriptionInformation']['description'],
 			'news_other_info_facade' => $data_input['otherInformation']['facade'],
 			'news_other_info_directionhouse' => $data_input['otherInformation']['directionhouse'],
 			'news_other_info_directionbalcony' => $data_input['otherInformation']['directionbalcony'],
@@ -217,14 +226,33 @@ class S_PostNewsService
 			'news_basic_info_acreage' => $data_input['basicInformation']['acreage'],
 			'news_basic_info_price' => $data_input['basicInformation']['price'],
 			'news_basic_info_unit' => $data_input['basicInformation']['unit'],
+			'news_basic_info_total_price' => null,
 			'news_basic_info_address' => $data_input['basicInformation']['address'],
+			'news_description_info' => $data_input['descriptionInformation']['description'],
 			'news_other_info_numberbedrooms' => $data_input['otherInformation']['numberbedrooms'],
 			'news_other_info_numbertoilets' => $data_input['otherInformation']['numbertoilets'],
 			'news_calendar_typeofcost' => $data_input['calendar']['typeofcost'],
 			'news_calendar_timestart' => $data_input['calendar']['timestart'],
 			'news_calendar_timefinish' => $data_input['calendar']['timefinish'],
+			'prioritize_01' => 0,
 			'news_detail_id' => null,
 		];
+		if($data_news_info['news_calendar_typeofcost'] == 'Special'){
+			$data_news_info['prioritize_01'] = 4;
+		}elseif($data_news_info['news_calendar_typeofcost'] == 'Vip'){
+			$data_news_info['prioritize_01'] = 3;
+		}elseif($data_news_info['news_calendar_typeofcost'] == 'Goodwill'){
+			$data_news_info['prioritize_01'] = 2;
+		}else{
+			$data_news_info['prioritize_01'] = 1;
+		}
+		if($data_news_info['news_basic_info_unit'] == 'Dollar/m²'){
+			$data_news_info['news_basic_info_total_price'] = round($data_news_info['news_basic_info_acreage'] * $data_news_info['news_basic_info_price']);
+		}elseif($data_news_info['news_basic_info_unit'] == 'Negotiate'){
+			$data_news_info['news_basic_info_total_price'] = 'Negotiate';
+		}else{
+			$data_news_info['news_basic_info_total_price'] = $data_news_info['news_basic_info_price'];
+		}
 		return $data_news_info;
 	}
 

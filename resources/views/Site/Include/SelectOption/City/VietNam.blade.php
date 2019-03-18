@@ -1,5 +1,15 @@
+@if(!empty($data_city))
 <option value="" selected="selected">-- Province/City --</option>
-<option value="Hà nội">Hà nội</option>
-<option value="Hải Phòng">Hải Phòng</option>
-<option value="Hồ Chí Minh">Hồ Chí Minh</option>
-<option value="Đà Nẵng">Đà Nẵng</option>
+@foreach($data_city as $city)
+@php
+	if(!empty($data_search_city) && $data_search_city == $city){
+		$check = 'selected';
+	}else{
+		$check = '';
+	}
+@endphp
+<option value="{{ $city }}" {{ $check }}>{{ $city }}</option>
+@endforeach
+@else
+<option value="" selected="selected">-- Province/City --</option>
+@endif

@@ -54,5 +54,13 @@ class AppServiceProvider extends ServiceProvider
             'App\Repository\Interfaces\Post_news_historiesRepositoryInterface',
             'App\Repository\Post_news_historiesRepository'
         );
+        $this->app->bind(
+            'App\Repository\Interfaces\Company_informationsRepositoryInterface',
+            'App\Repository\Company_informationsRepository'
+        );
+        $this->app->bind(
+            'App\Repository\Interfaces\Company_brokersRepositoryInterface',
+            'App\Repository\Company_brokersRepository'
+        );
     }
 }

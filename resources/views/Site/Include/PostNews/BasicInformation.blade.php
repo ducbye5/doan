@@ -22,10 +22,10 @@
 								<div class="pb-2">
 									<select class="form-control chosen-select" name="basicInformation[type]" data-placeholder="" id="postnews_type">
 										<option value="" selected>-- Type --</option>
-										<option value="Rental">Rental</option>
-										<option value="Sell">Sell</option>
-										<option value="Rent">Rent</option>
-										<option value="Purchase">Purchase</option>
+										<option value="rental">Rental</option>
+										<option value="sell">Sell</option>
+										<option value="rent">Rent</option>
+										<option value="purchase">Purchase</option>
 									</select>
 									<i class="text-red hide" id="postnews_type_error"></i>
 								</div>

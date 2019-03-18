@@ -58,3 +58,59 @@
 .default:focus{
 	border-color: #333;
 }
+.text-red{
+	color: red;
+}
+.text-blue{
+	color: blue;
+}
+.text-green{
+	color: green;
+}
+/*Extra large devices*/
+@media only screen and (min-width: 1200px){
+
+.img-properties{
+	height: 240px;
+}
+.pad-top-0{
+	padding-top: 0px !important
+}
+	
+}
+/*Large devices*/
+@media only screen and (min-width: 992px){
+
+.img-properties{
+	height: 240px;
+}
+
+.pad-top-0{
+	padding-top: 0px !important
+}
+	
+}
+/*Medium devices*/
+@media only screen and (min-width: 768px){
+
+.img-properties{
+	height: 240px;
+}
+
+}
+/*Small devices*/
+@media only screen and (min-width: 600px){
+
+.img-properties{
+	height: 240px;
+}
+
+}
+/*Extra small devices*/
+@media only screen and (max-width: 600px){
+
+.img-properties{
+	height: 211px;
+}
+
+}

@@ -14,170 +14,114 @@
 Auth::routes();
 
 									//Site
-Route::group(array('middleware'=>'customer'),function(){
-	Route::get('/',function(){
-		return redirect()->route('site.index');
+Route::group(array('middleware'=>['site']),function(){
+	Route::group(array('middleware'=>['customer']),function(){
+		Route::get('/',function(){
+			return redirect()->route('site.index');
+		});
+
+		Route::post('logincustomer',[
+			'uses' => 'Site\CustomerController@login',
+			'as' => 'customer.login'
+		]);
+
+		Route::post('registcustomer',[
+			'uses' => 'Site\CustomerController@regist',
+			'as' => 'customer.regist'
+		]);
+
+		Route::get('logoutcustomer',[
+			'uses' => 'Site\CustomerController@logout',
+			'as' => 'customer.logout'
+		]);
+
+		//index
+		Route::get('/index',[
+				'uses'=>'SiteController@index',
+				'as'=>'site.index'
+			]);
+		Route::get('/index-map',[
+				'uses'=>'SiteController@indexMap',
+				'as'=>'site.index-map'
+			]);
+		Route::post('/index', [
+				'uses'=>'SiteController@searchProperties',
+				'as'=>'index.searchProperties'
+			]);
+
+		//customers
+
+		Route::group(array('prefix'=>'customer'),function(){
+			//edit profile
+			Route::get('editprofile',[
+				'uses' => 'Site\CustomerController@edit',
+				'as' => 'customer.editprofile'
+			]);
+		});
+
+		//post news
+		Route::get('/postnews',[
+				'uses'=>'Site\PostNewsController@index',
+				'as'=>'postnews.index'
+			]);
+		Route::post('/postnews',[
+				'uses'=>'Site\PostNewsController@regist',
+				'as'=>'postNews.regist'
+			]);
+		//buy coint
+		Route::get('/coint',[
+				'uses'=>'Site\CointController@index',
+				'as'=>'coint.index'
+			]);
+		//properties
+		Route::group(array('prefix'=>'properties'),function(){
+			Route::get('/{type}', [
+				'uses'=>'Site\PropertiesForSellController@index',
+				'as'=>'properties.index'
+			]);
+			Route::post('/{type}', [
+				'uses'=>'Site\PropertiesForSellController@searchProperties',
+				'as'=>'properties.searchProperties'
+			]);
+			Route::get('/detail/{id}', [
+				'uses'=>'Site\PropertiesForSellController@detail',
+				'as'=>'properties.detail'
+			]);
+			//sell
+		});
 	});
 
-	Route::post('logincustomer',[
-		'uses' => 'Site\CustomerController@login',
-		'as' => 'customer.login'
-	]);
-
-	Route::post('registcustomer',[
-		'uses' => 'Site\CustomerController@regist',
-		'as' => 'customer.regist'
-	]);
-
-	Route::get('logoutcustomer',[
-		'uses' => 'Site\CustomerController@logout',
-		'as' => 'customer.logout'
-	]);
-
-	//index
-	Route::get('/index',[
-			'uses'=>'SiteController@index',
-			'as'=>'site.index'
-		]);
-	Route::get('/index-map',[
-			'uses'=>'SiteController@indexMap',
-			'as'=>'site.index-map'
+	//agent
+	Route::get('/agent/{id}',[
+			'uses'=>'Site\AgentController@index',
+			'as'=>'agent.index'
 		]);
 
-	//customers
+	//blog
+	Route::get('/blog',[
+			'uses'=>'Site\BlogController@index',
+			'as'=>'blog.index'
+		]);
 
-	Route::group(array('prefix'=>'customer'),function(){
-		//edit profile
-		Route::get('editprofile',[
-			'uses' => 'Site\CustomerController@edit',
-			'as' => 'customer.editprofile'
+	//contact us
+	Route::get('/contact_us',[
+			'uses'=>'Site\ContactUsController@index',
+			'as'=>'contact_us.index'
 		]);
-	});
 
-	//post news
-	Route::get('/postnews',[
-			'uses'=>'Site\PostNewsController@index',
-			'as'=>'postnews.index'
+	//page
+	Route::group(array('prefix'=>'page'),function(){
+		Route::get('/about_us',[
+			'uses'=>'Site\AboutUsController@index',
+			'as'=>'about_us.index'
 		]);
-	Route::post('/postnews',[
-			'uses'=>'Site\PostNewsController@regist',
-			'as'=>'postNews.regist'
+		Route::get('/faq',[
+			'uses'=>'Site\FaqController@index',
+			'as'=>'faq.index'
 		]);
-	//buy coint
-	Route::get('/coint',[
-			'uses'=>'Site\CointController@index',
-			'as'=>'coint.index'
-		]);
-	//properties
-	Route::group(array('prefix'=>'properties'),function(){
-		//sell
-		Route::group(array('prefix'=>'sell'),function(){
-			Route::get('dwelling_house', [
-				'uses'=>'Site\PropertiesForSellController@getList_Dwelling_house',
-				'as'=>'propertiesforsell.dwelling_house'
-			]);
-			Route::get('apartment', [
-				'uses'=>'Site\PropertiesForSellController@getList_Apartment',
-				'as'=>'propertiesforsell.apartment'
-			]);
-			Route::get('land',[
-				'uses'=>'Site\PropertiesForSellController@getList_Land',
-				'as'=>'propertiesforsell.land'
-			]);
-			Route::get('other_real_estate',[
-				'uses'=>'Site\PropertiesForSellController@getList_Other_real_estate',
-				'as'=>'propertiesforsell.other_real_estate'
-			]);
-		});
-		//rental
-		Route::group(array('prefix'=>'rental'),function(){
-			Route::get('dwelling_house',[
-				'uses'=>'Site\PropertiesForRentalController@getList_Dwelling_house',
-				'as'=>'propertiesforrental.dwelling_house'
-			]);
-			Route::get('apartment',[
-				'uses'=>'Site\PropertiesForRentalController@getList_Apartment',
-				'as'=>'propertiesforrental.apartment'
-			]);
-			Route::get('land',[
-				'uses'=>'Site\PropertiesForRentalController@getList_Land',
-				'as'=>'propertiesforrental.land'
-			]);
-			Route::get('other_real_estate',[
-				'uses'=>'Site\PropertiesForRentalController@getList_Other_real_estate',
-				'as'=>'propertiesforrental.other_real_estate'
-			]);
-		});
-		//purchase
-		Route::group(array('prefix'=>'purchase'),function(){
-			Route::get('dwelling_house',[
-				'uses'=>'Site\PropertiesForPurchaseController@getList_Dwelling_house',
-				'as'=>'propertiesforpurchase.dwelling_house'
-			]);
-			Route::get('apartment',[
-				'uses'=>'Site\PropertiesForPurchaseController@getList_Apartment',
-				'as'=>'propertiesforpurchase.apartment'
-			]);
-			Route::get('land',[
-				'uses'=>'Site\PropertiesForPurchaseController@getList_Land',
-				'as'=>'propertiesforpurchase.land'
-			]);
-			Route::get('other_real_estate',[
-				'uses'=>'Site\PropertiesForPurchaseController@getList_Other_real_estate',
-				'as'=>'propertiesforpurchase.other_real_estate'
-			]);
-		});
-		//rent
-		Route::group(array('prefix'=>'rent'),function(){
-			Route::get('dwelling_house',[
-				'uses'=>'Site\PropertiesForRentController@getList_Dwelling_house',
-				'as'=>'propertiesforrent.dwelling_house'
-			]);
-			Route::get('apartment',[
-				'uses'=>'Site\PropertiesForRentController@getList_Apartment',
-				'as'=>'propertiesforrent.apartment'
-			]);
-			Route::get('land',[
-				'uses'=>'Site\PropertiesForRentController@getList_Land',
-				'as'=>'propertiesforrent.land'
-			]);
-			Route::get('other_real_estate',[
-				'uses'=>'Site\PropertiesForRentController@getList_Other_real_estate',
-				'as'=>'propertiesforrent.other_real_estate'
-			]);
-		});
 	});
 });
 
-//agent
-Route::get('/agent',[
-		'uses'=>'Site\AgentController@index',
-		'as'=>'agent.index'
-	]);
-
-//blog
-Route::get('/blog',[
-		'uses'=>'Site\BlogController@index',
-		'as'=>'blog.index'
-	]);
-
-//contact us
-Route::get('/contact_us',[
-		'uses'=>'Site\ContactUsController@index',
-		'as'=>'contact_us.index'
-	]);
-
-//page
-Route::group(array('prefix'=>'page'),function(){
-	Route::get('/about_us',[
-		'uses'=>'Site\AboutUsController@index',
-		'as'=>'about_us.index'
-	]);
-	Route::get('/faq',[
-		'uses'=>'Site\FaqController@index',
-		'as'=>'faq.index'
-	]);
-});
 
 
 

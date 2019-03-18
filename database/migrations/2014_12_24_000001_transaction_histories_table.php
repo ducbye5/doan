@@ -20,7 +20,7 @@ class TransactionHistoriesTable extends Migration
             $table->integer('transaction_amount')->nullable();
             $table->integer('transaction_coint');
             $table->integer('total_coint');
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'delete'=> \App\Http\Middleware\Delete::class,
         'changerole'=> \App\Http\Middleware\ChangeRole::class,
         'customer'=> \App\Http\Middleware\Customer::class,
+        'site'=> \App\Http\Middleware\Site::class,
     ];
 }

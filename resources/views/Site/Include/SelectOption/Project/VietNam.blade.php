@@ -1,3 +1,15 @@
+@if(!empty($data_project))
 <option value="" selected>-- Project --</option>
-<option value="113 Trung Kính">113 Trung Kính</option>
-<option value="An Lạc – Hoàng Ngân">An Lạc – Hoàng Ngân</option>
+@foreach($data_project as $project)
+@php
+	if(!empty($data_search_project) && $data_search_project == $project){
+		$check = 'selected';
+	}else{
+		$check = '';
+	}
+@endphp
+<option value="{{ $project }}" {{ $check }}>{{ $project }}</option>
+@endforeach
+@else
+<option value="" selected>-- Project --</option>
+@endif

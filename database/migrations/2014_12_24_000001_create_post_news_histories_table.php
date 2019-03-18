@@ -18,8 +18,8 @@ class CreatePostNewsHistoriesTable extends Migration
             $table->integer('customer_id')->unsigned();
             $table->integer('news_infos_id')->unsigned();
             $table->string('post_news_fees');
-            $table->foreign('customer_id')->references('id')->on('customers');
-            $table->foreign('news_infos_id')->references('id')->on('news_infos');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->foreign('news_infos_id')->references('id')->on('news_infos')->onDelete('cascade');
             $table->timestamps();
         });
     }

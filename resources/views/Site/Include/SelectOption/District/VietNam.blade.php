@@ -1,5 +1,15 @@
+@if(!empty($data_district))
 <option value="" selected="selected">-- District --</option>
-<option value="Gia Lâm">Gia Lâm</option>
-<option value="Cầu Giấy">Cầu Giấy</option>
-<option value="Hai Bà Trưng">Hai Bà Trưng</option>
-<option value="Long Biên">Long Biên</option>
+@foreach($data_district as $district)
+@php
+	if(!empty($data_search_district) && $data_search_district == $district){
+		$check = 'selected';
+	}else{
+		$check = '';
+	}
+@endphp
+<option value="{{ $district }}" {{ $check }}>{{ $district }}</option>
+@endforeach
+@else
+<option value="" selected="selected">-- District --</option>
+@endif

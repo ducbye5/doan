@@ -21,7 +21,7 @@ class CreateCustomersTable extends Migration
             $table->integer('profiles_id')->unsigned();
             $table->integer('social_links_id')->unsigned();
             $table->foreign('profiles_id')->references('id')->on('profiles');
-            $table->foreign('social_links_id')->references('id')->on('social_links');
+            $table->foreign('social_links_id')->references('id')->on('social_links')->onDelete('cascade');
             $table->timestamps();
         });
     }

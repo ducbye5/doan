@@ -14,4 +14,6 @@ class Profiles extends Model
      'profile_telephone',
      'profile_description',
     ];
+
+    protected $table = 'profiles';
 }

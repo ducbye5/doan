@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('active',7)->default('enable');
             $table->integer('profile_id')->unsigned();
             $table->integer('social_links_id')->unsigned();
-            $table->foreign('profile_id')->references('id')->on('profiles');
-            $table->foreign('social_links_id')->references('id')->on('social_links');
+            $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
+            $table->foreign('social_links_id')->references('id')->on('social_links')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

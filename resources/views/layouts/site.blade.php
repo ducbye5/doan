@@ -33,17 +33,9 @@
 	
 	<!-- Style Switcher-->
 	<link rel="stylesheet" href="{{ asset('assets/site/style-switcher/css/style-switcher.css') }}">
-	<!-- <link href="{{ asset('assets/site/css/colors/red/style.html') }}" rel="stylesheet" id="layoutstyle"> -->
 
 	<!-- Theme Responsive-->
 	<link href="{{ asset('assets/site/css/theme-responsive.css') }}" rel="stylesheet">
-
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
 	<link href="{{ asset('css/site.css') }}" rel="stylesheet">
 	<script src="{{ asset('assets/site/vendor/jquery.min.js') }}"></script>
 </head>
@@ -52,19 +44,19 @@
 		<header>
 			<div id="top">
 				<div class="container">
-					<p class="pull-left text-note hidden-xs"><i class="fa fa-phone"></i> Need Support? 1-800-666-8888</p>
+					<!-- <p class="pull-left text-note hidden-xs"><i class="fa fa-phone"></i> Need Support? 1-800-666-8888</p> -->
 					<ul class="nav nav-pills nav-top navbar-right">
 						@if(\Session::has('customer'))
 						<li><a href="{{ route('customer.logout') }}" title="Logout" data-placement="bottom" data-toggle="tooltip" data-original-title="Logout"><i class="glyphicon glyphicon-log-out"></i></a></li>
 						@else
 						<li class="login"><a href="" data-toggle="modal" data-target="#login" title="Login"><i class="glyphicon glyphicon-log-in"></i></a></li>
 						@endif
-						<li><a href="" title="Email" data-placement="bottom" data-toggle="modal" data-original-title="Email" data-target="#report"><i class="fa fa-envelope-o"></i></a></li>
-						<li><a href="https://www.facebook.com/" title="Facebook" data-placement="bottom" data-toggle="tooltip" data-original-title="Facebook" target="blank"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="https://twitter.com/" title="Twitter" data-placement="bottom" data-toggle="tooltip" data-original-title="Twitter" target="blank"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="https://www.linkedin.com/" title="Linkedin" data-placement="bottom" data-toggle="tooltip" data-original-title="Linkedin" target="blank"><i class="fa fa-linkedin"></i></a></li>
-						<li><a href="https://www.skype.com/" title="Skype" data-placement="bottom" data-toggle="tooltip" data-original-title="Skype" target="blank"><i class="fa fa-skype"></i></a></li>
-						<li><a href="https://www.slack.com/" title="Slack" data-placement="bottom" data-toggle="tooltip" data-original-title="Slack" target="blank"><i class="fa fa-slack"></i></a></li>
+						<!-- <li><a href="" title="Email" data-placement="bottom" data-toggle="modal" data-original-title="Email" data-target="#report"><i class="fa fa-envelope-o"></i></a></li> -->
+						<li><a href="{{ $company['data_main']['office_facebook'] }}" title="Facebook" data-placement="bottom" data-toggle="tooltip" data-original-title="Facebook" target="blank"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="{{ $company['data_main']['office_twitter'] }}" title="Twitter" data-placement="bottom" data-toggle="tooltip" data-original-title="Twitter" target="blank"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="{{ $company['data_main']['office_linkedin'] }}" title="Linkedin" data-placement="bottom" data-toggle="tooltip" data-original-title="Linkedin" target="blank"><i class="fa fa-linkedin"></i></a></li>
+						<li><a href="{{ $company['data_main']['office_skype'] }}" title="Skype" data-placement="bottom" data-toggle="tooltip" data-original-title="Skype" target="blank"><i class="fa fa-skype"></i></a></li>
+						<li><a href="{{ $company['data_main']['office_slack'] }}" title="Slack" data-placement="bottom" data-toggle="tooltip" data-original-title="Slack" target="blank"><i class="fa fa-slack"></i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -82,56 +74,33 @@
 									<li><a href="{{ route('site.index') }}">Home Slider</a></li>
 								</ul>
 							</li>
-							<li class="dropdown"><a href="{{ route('propertiesforsell.dwelling_house') }}" class="dropdown-toggle" data-toggle="dropdown">Sell and Rental</a>
+							<li class="dropdown"><a href="{{ route('properties.index',['type' => 'sell']) }}" class="dropdown-toggle" data-toggle="dropdown">Sell and Rental</a>
 								<ul class="dropdown-menu">
-									<li class="dropdown"><a href="{{ route('propertiesforsell.dwelling_house') }}" class="dropdown-toggle" data-target="#" data-toggle="dropdown">Properties for Sell</a>
-										<ul class="dropdown-menu">
-											<li><a href="{{ route('propertiesforsell.dwelling_house') }}">Dwelling House</a></li>
-											<li><a href="{{ route('propertiesforsell.apartment') }}">Apartment</a></li>
-											<li><a href="{{ route('propertiesforsell.land') }}">Land</a></li>
-											<li><a href="{{ route('propertiesforsell.other_real_estate') }}">Other Real Estate</a></li>
-										</ul>
-									</li>
-									<li class="dropdown"><a href="{{ route('propertiesforrental.dwelling_house') }}" class="dropdown-toggle" data-target="#" data-toggle="dropdown">Properties for Rental</a>
-										<ul class="dropdown-menu">
-											<li><a href="{{ route('propertiesforrental.dwelling_house') }}">Dwelling House</a></li>
-											<li><a href="{{ route('propertiesforrental.apartment') }}">Apartment</a></li>
-											<li><a href="{{ route('propertiesforrental.land') }}">land</a></li>
-											<li><a href="{{ route('propertiesforrental.other_real_estate') }}">Other Real Estate</a></li>
-										</ul>
-									</li>
+									<li><a href="{{ route('properties.index',['type' => 'sell']) }}">Properties for Sell</a></li>
+									<li><a href="{{ route('properties.index',['type' => 'rental']) }}">Properties for Rental</a></li>
 								</ul>
 							</li>
-							<li class="dropdown"><a href="{{ route('propertiesforpurchase.dwelling_house') }}" class="dropdown-toggle" data-toggle="dropdown">Purchase and Rent</a>
+							<li class="dropdown"><a href="{{ route('properties.index',['type' => 'purchase']) }}" class="dropdown-toggle" data-toggle="dropdown">Purchase and Rent</a>
 								<ul class="dropdown-menu">
-									<li class="dropdown"><a href="{{ route('propertiesforpurchase.dwelling_house') }}" class="dropdown-toggle" data-target="#" data-toggle="dropdown">Properties for Purchase</a>
-										<ul class="dropdown-menu">
-											<li><a href="{{ route('propertiesforpurchase.dwelling_house') }}">Dwelling House</a></li>
-											<li><a href="{{ route('propertiesforpurchase.apartment') }}">Apartment</a></li>
-											<li><a href="{{ route('propertiesforpurchase.land') }}">land</a></li>
-											<li><a href="{{ route('propertiesforpurchase.other_real_estate') }}">Other Real Estate</a></li>
-										</ul>
-									</li>
-									<li class="dropdown"><a href="{{ route('propertiesforrent.dwelling_house') }}" class="dropdown-toggle" data-target="#" data-toggle="dropdown">Properties for Rent</a>
-										<ul class="dropdown-menu">
-											<li><a href="{{ route('propertiesforrent.dwelling_house') }}">Dwelling House</a></li>
-											<li><a href="{{ route('propertiesforrent.apartment') }}">Apartment</a></li>
-											<li><a href="{{ route('propertiesforrent.land') }}">land</a></li>
-											<li><a href="{{ route('propertiesforrent.other_real_estate') }}">Other Real Estate</a></li>
-										</ul>
-									</li>
+									<li><a href="{{ route('properties.index',['type' => 'purchase']) }}">Properties for Purchase</a></li>
+									<li><a href="{{ route('properties.index',['type' => 'rent']) }}">Properties for Rent</a></li>
 								</ul>
 							</li>
-							<li><a href="{{ route('postnews.index') }}">Post a news</a></li>
-			              	<li><a href="{{ route('agent.index') }}">Agents</a></li>
+							<li><a href="{{ route('postnews.index') }}">Register properties articles</a></li>
 			              	<li class="dropdown"><a href="{{ route('about_us.index') }}" class="dropdown-toggle" data-toggle="dropdown">Pages</a>
 			                	<ul class="dropdown-menu">
 			                  		<li><a href="{{ route('about_us.index') }}">About Us</a></li>
 			                  		<li><a href="{{ route('faq.index') }}">FAQs</a></li>
-			                	</ul>
+			                  		<li><a href="{{ route('contact_us.index') }}">Contact Us</a></li>			         
+			                  	</ul>
 			              	</li>
 			              	<li><a href="{{ route('blog.index') }}">Blog</a> </li>
-			              	<li><a href="{{ route('contact_us.index') }}">Contact Us</a></li>
+			              	<li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Others</a>
+			                	<ul class="dropdown-menu">
+			                  		<li><a href="">Utility Support</a></li>
+			                  		<li><a href="">Helps & Guide</a></li>
+			                	</ul>
+			              	</li>
 						</ul>
 					</div><!--/.nav-collapse --> 
 				</div><!--/.container-fluid --> 
@@ -149,13 +118,15 @@
 					<div class="row">
 						<div class="col-sm-4">
 							<h2>Contact detail</h2>
-							<p>Pellentesque nec erat. Aenean semper, neque non faucis. Malesuada, dui felis tempor felis, vel varius ante diam ut mauris.</p>
+							@foreach($company['data_info'] as $address)
 							<address>
-								<i class="fa fa-map-marker"></i> Office : 1-800-666-8888<br>
-								<i class="fa fa-phone"></i> Mobile : 0800-666-6666<br>
-								<i class="fa fa-fax"></i> Fax : 1-800-666-8888<br>
-								<i class="fa fa-envelope-o"></i> Mail: <a href="mailto:pixelgeklab@gmail.com">Pixelgeklab@gmail.com</a>
+								<i class="fa fa-map-marker"></i> Office : {{ $address['office_branch'] }}<br>
+								<i class="fa fa-map-marker"></i> Address : {{ $address['office_address'] }}<br>
+								<i class="fa fa-phone"></i> Mobile : {{ $address['office_telephone'] }}<br>
+								<i class="fa fa-fax"></i> Fax : {{ $address['office_fax'] }}<br>
+								<i class="fa fa-envelope-o"> Mail: {{ $address['office_mail'] }}</i>
 							</address>
+							@endforeach
 						</div>
 						<div class="col-sm-2">
 							<h2>Useful links</h2>
@@ -184,7 +155,7 @@
 						<div class="col-sm-4">
 							<h2>Don’t miss out</h2>
 							<p>In venenatis neque a eros laoreet eu placerat erat suscipit. Fusce cursus, erat ut scelerisque condimentum, quam odio ultrices leo.</p>
-							<form class="form-inline pgl-form-newsletter" role="form">
+							<form class="form-inline pgl-form-newsletter" role="form" method="post" action="">
 								<div class="form-group">
 									<label class="sr-only" for="exampleInputEmail2">Email address</label>
 									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter your email here">
@@ -195,7 +166,7 @@
 					</div>
 				</div>
 				<div class="pgl-copyrights">
-					<p>Copyright © 2014 RealEstast. Designed by <a href="http://pixelgeeklab.com/">PixelGeekLab</a></p>
+					<p>Copyright © 2019 RealEstast. Designed by <a href="http://facebook.com/">Đỗ Minh Đức</a></p>
 				</div>
 			</div>
 		</footer>
@@ -246,6 +217,4 @@
 	<script src="{{ asset('js/site/site.js') }}"></script>
 	
 </body>
-
-<!-- Mirrored from pixelgeeklab.com/html/realestast/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Sep 2018 16:02:19 GMT -->
 </html>
