@@ -4,7 +4,9 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Post_news_histories::class, function (Faker $faker) {
     return [
-    	'customer_id' => 1,
+    	'customer_id' => function () {
+            return factory(App\Models\Customers::class)->create()->id;
+        },
     	'news_infos_id' => function () {
             return factory(App\Models\News_infos::class)->create()->id;
         },
